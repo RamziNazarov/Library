@@ -20546,6 +20546,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\AB\\Desktop\\Library\\Library\\Views\\SingIn\\Index.cshtml",
+      "TargetPath": "Views\\SingIn\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\AB\\Desktop\\Library\\Library\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
