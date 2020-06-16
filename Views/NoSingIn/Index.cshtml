@@ -1,0 +1,50 @@
+@{
+    List<Book> books = ViewBag.Books;
+    <form action="/NoSingIn/Index" method="POST">
+        <dir class="form-inline">
+            <select name="" id="" class="form-control input-group col-md-2 ">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option selected value="4">4</option>
+            </select>
+            <input type="text" name="" id="" class="form-control input-group col-md-4" placeholder="Имя автора/название книги">
+            <input type="submit" class="btn btn-secondary form-control input-group col-md-2" value="Показать">
+        </dir>
+    </form>
+    for(int i =0; i < books.Count;i++)
+    {
+        <section class="text-center mb-4">
+            <div class="row wow fadeId">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card">
+                        <div class="view overlay">
+                            <img class="card-img-top" src="~/w.jpg" alt="">
+                            <a href="">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                        <div class="card-body text-center">
+                        
+                            <a href="" class="grey-text">
+                                <h6>@books[i].Title</h6>
+                            </a>
+                        
+                            <h6>@books[i].Author</h6>
+                        <form action="">
+                            <input type="file">
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @* <div class="text-center" style="float: left; position: relative; width: 260px; height: 400px;">
+            <img width="260px" height="300px" src="~/w.jpg">
+            <p>@item.Title</p>
+            <a>@item.Author</a>
+        </div> *@
+    
+    }
+}
