@@ -1,0 +1,51 @@
+@{
+    List<Book> books = ViewBag.Books;
+        <nav class="navbar navbar-expand-lg navbar-dark bg-light" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+            <form  class="form-inline" action="/Admin/Index" method="POST">
+                <label for="Genre">Жанры:</label>
+                <select class="form-control col-md-2 input-group mr-2" name="Genre" id="Genre">
+                    <option value="Новелла">Новелла</option>
+                    <option value="Фантастика">Фантастика</option>
+                    <option value="Литература">Литература</option>
+                    <option selected value="All">Все</option>
+                </select>
+                <label for="year">Год издания:</label>
+                <input type="text" placeholder="@DateTime.Now.Year" class="form-control input-group col-md-1" name="DataIzdaniya" id="year">
+                <label for="state">Статус:</label>
+                <select name="State" class="form-control input-group col-md-2 mr-2" id="state">
+                    <option value="Free">Свободные</option>
+                    <option value="Busy">В аренде</option>
+                    <option selected value="All">Все</option>
+                </select>
+                <label for="state">Серийный номер:</label>
+                <input type="number" name="SerNumb" class="form-control input-group col-md-2 mr-2" id="state">
+                <input type="submit" class="btn btn-secondary" value="Найти">
+            </form>
+        </nav>
+        <br>
+            <section class="text-center mb-4">
+            <div class="row wow fadeId">
+                @for(int i = 0; i < books.Count;i++)
+                {
+                    string imgPath = "https://localhost:5001" + books[i].ImgPath;
+                    string link = $"https://localhost:5001/Admin/Book/{books[i].SerNumber}";
+                    <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="card">
+                                <div class="view overlay">
+                                    <img height="250px" class="card-img-top" src="@imgPath" alt="">
+                                    <a href="">
+                                        <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <a href="@link" class="grey-text">
+                                        <h6>@books[i].Title</h6>
+                                    </a>                    
+                                    <h6>@books[i].Author</h6>
+                                </div>
+                            </div>
+                    </div>
+                }
+            </div>
+        </section>
+    }

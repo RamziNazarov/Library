@@ -56,7 +56,7 @@ namespace Library
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=SingIn}/{action=Index}/{id?}");
+                    pattern: "{controller=NoSingIn}/{action=LogIn}/{id?}");
             });
         }
     }

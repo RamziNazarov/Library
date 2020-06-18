@@ -1,0 +1,41 @@
+<form action="/Admin/AddBook" method="post" enctype="multipart/form-data">
+    <div class="row col-md-4">
+        <label for="SerNumb">Серийный номер</label>
+        <input type="number" name="SerNumb" id="SerNumb" class="ml-2 form-control input-group">
+    </div>
+    <br>
+    <div class="row col-md-4">
+        <label for="newfile">Изменить фотографию</label>
+        <input type="file" name="uploadFile" id="newfile" class="ml-2 form-control input-group">
+    </div>
+    <br>
+    <div class="row col-md-4">
+        <label for="Title">Название</label>
+        <input type="text" name="Title" id="Title" class="ml-2 form-control input-group">
+    </div>
+    <br>
+    <div class="row col-md-4">
+        <label for="Author">Автор</label>
+        <input type="text" name="Author" id="Author" class="ml-2 form-control input-group">
+    </div>
+    <br>
+    <div class="row col-md-4">
+        <label for="Descriptoin">Описание</label>
+        <textarea required name="Description" id="Description" maxlength="250" cols="25" class="ml-2 form-control input-group" rows="10"></textarea>
+    </div>
+    <br>
+    <div class="row col-md-4">
+        <label for="year">Год издания</label>
+        <input type="number" name="Year" id="year" class="ml-2 form-control input-group">
+    </div>
+    <br>
+    <div class="row col-md-4">
+        <label for="Genre">Жанры</label>
+        <input type="text" name="Genre" id="Genre" class="ml-2 form-control input-group">
+    </div>
+    <br>
+    <div class="form-row">
+        <input type="submit" class="btn btn-secondary text-dark" value="Добавить">
+    </div>
+    <br>
+</form>
