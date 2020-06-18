@@ -15,7 +15,6 @@ namespace Library.Models
         [Required]
         [StringLength(10)]
         public string State {get;set;}
-        [Required]
         public DateTime VozDate{ get;set;}
 
         public virtual Book Books {get;set;}

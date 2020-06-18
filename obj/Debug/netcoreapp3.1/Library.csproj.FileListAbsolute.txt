@@ -223,13 +223,9 @@ C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreap
 C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Library.TagHelpers.input.cache
 C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Library.TagHelpers.output.cache
 C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Library.RazorCoreGenerate.cache
-C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Books.cshtml.g.cs
-C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Admin\EditBook.cshtml.g.cs
 C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\NoSingIn\Index.cshtml.g.cs
 C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
-C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\SingIn\Index.cshtml.g.cs
-C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\SingIn\Registr.cshtml.g.cs
 C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Library.RazorTargetAssemblyInfo.cache
@@ -241,3 +237,12 @@ C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreap
 C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Library.dll
 C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Library.pdb
 C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Library.genruntimeconfig.cache
+C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\NoSingIn\LogIn.cshtml.g.cs
+C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\NoSingIn\Registr.cshtml.g.cs
+C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\NoSingIn\Book.cshtml.g.cs
+C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
+C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Book.cshtml.g.cs
+C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Admin\AddBook.cshtml.g.cs
+C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\User\Applications.cshtml.g.cs
+C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\User\Book.cshtml.g.cs
+C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs

@@ -20526,13 +20526,33 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Рухшод Назаров\\Desktop\\Library\\Library\\Views\\User\\Book.cshtml",
+      "TargetPath": "Views\\User\\Book.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Рухшод Назаров\\Desktop\\Library\\Library\\Views\\NoSingIn\\LogIn.cshtml",
+      "TargetPath": "Views\\NoSingIn\\LogIn.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Рухшод Назаров\\Desktop\\Library\\Library\\Views\\Admin\\Index.cshtml",
+      "TargetPath": "Views\\Admin\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Рухшод Назаров\\Desktop\\Library\\Library\\Views\\User\\Index.cshtml",
+      "TargetPath": "Views\\User\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Рухшод Назаров\\Desktop\\Library\\Library\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Рухшод Назаров\\Desktop\\Library\\Library\\Views\\Admin\\EditBook.cshtml",
-      "TargetPath": "Views\\Admin\\EditBook.cshtml",
+      "FilePath": "c:\\Users\\Рухшод Назаров\\Desktop\\Library\\Library\\Views\\User\\Applications.cshtml",
+      "TargetPath": "Views\\User\\Applications.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20541,8 +20561,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Рухшод Назаров\\Desktop\\Library\\Library\\Views\\SingIn\\Index.cshtml",
-      "TargetPath": "Views\\SingIn\\Index.cshtml",
+      "FilePath": "c:\\Users\\Рухшод Назаров\\Desktop\\Library\\Library\\Views\\Admin\\Book.cshtml",
+      "TargetPath": "Views\\Admin\\Book.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20551,8 +20571,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Рухшод Назаров\\Desktop\\Library\\Library\\Views\\SingIn\\Registr.cshtml",
-      "TargetPath": "Views\\SingIn\\Registr.cshtml",
+      "FilePath": "c:\\Users\\Рухшод Назаров\\Desktop\\Library\\Library\\Views\\Admin\\AddBook.cshtml",
+      "TargetPath": "Views\\Admin\\AddBook.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Рухшод Назаров\\Desktop\\Library\\Library\\Views\\NoSingIn\\Book.cshtml",
+      "TargetPath": "Views\\NoSingIn\\Book.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20561,8 +20586,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Рухшод Назаров\\Desktop\\Library\\Library\\Views\\Admin\\Books.cshtml",
-      "TargetPath": "Views\\Admin\\Books.cshtml",
+      "FilePath": "c:\\Users\\Рухшод Назаров\\Desktop\\Library\\Library\\Views\\NoSingIn\\Registr.cshtml",
+      "TargetPath": "Views\\NoSingIn\\Registr.cshtml",
       "FileKind": "mvc"
     }
   ],

@@ -1,0 +1,86 @@
+@{
+    Book book = ViewBag.Book;
+    string a = $"https://localhost:5001"+book.ImgPath.Substring(1,book.ImgPath.Length-1);
+}
+<form action="/NoSingIn/Book" method="POST">
+    <div class="row mt-2 ml-1">
+        <label for="sern">Серийный номер: </label>
+        <select id="sern" class="form-control ml-1 mr-5 input-group col-md-2" name="SerNumb">
+        @foreach (var item in ViewBag.Books)
+        {
+            if(item.SerNumber == book.SerNumber)
+            {
+                <option selected value="@item.SerNumber">@item.SerNumber</option>
+            }
+            else
+            {   
+                <option value="@item.SerNumber">@item.SerNumber</option>
+            }
+        }
+        </select>
+        <input type="submit" class="btn btn-secondary text-dark" value="Перейти к книге">
+    </div>
+</form>
+<div class="container">
+<section class="mb-4 mt-2">
+    <img width="330px" class="mr-5" style="float: left; border-radius: 5px;" src="@a" alt="">
+    <h3>Название: @book.Title</h1>                  
+    <h4>Автор: @book.Author</h2>
+    <h4>Жанры: @book.Genre</h4>
+    <h5>Год издания: @book.DataIzdaniya</h3>
+    <p style="font-weight: 600;">Описание: @book.Description</p>
+    @if(book.State == "Free"){
+        <a href="https://localhost:5001/User/AddApplication/@book.SerNumber" class="btn btn-secondary text-dark">Приобрести</a>
+    }
+    else
+    {
+        <p style="font-weight: 500;">Нынешний владелец: @ViewBag.BookUser.FirstName @ViewBag.BookUser.LastName @ViewBag.BookUser.MiddleName</p>
+        <p style="font-weight: 500;">Телефон: +992-@ViewBag.BookUser.PhoneNumber</p>
+        <p style="font-weight: 500;">Email: @ViewBag.BookUser.Email</p>
+        <p style="font-weight: 500;">@ViewBag.Arenda.TakeDate.Substring(0,10)</p>
+    }
+    <h3></h3>
+</section>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+@{
+    @if(ViewBag.Comments != null)
+    {
+        <h4>Отзывы</h4>
+        <table class="mb-4 table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <td>Отзыв</td>
+                    <td>Дата</td>
+                    <td>Пользователь</td>
+                </tr>
+            </thead>
+            @if(ViewBag.Comments.Count > 0)
+            {
+                <tbody>
+                    @foreach (var item in ViewBag.Comments)
+                    {
+                        <tr>
+                            <td>@item</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+                </tbody>
+            }
+            else
+            {
+                <tbody>
+                    <tr>
+                        <td class="text-center" colspan="3">Отзывов нет</td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    }
+}

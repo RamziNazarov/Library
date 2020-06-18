@@ -13,36 +13,55 @@
                 <div class="navbar-collapse collapse container">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Книги</a>
+                            <a class="nav-link" asp-area="" asp-controller="NoSingIn" asp-action="Index">Книги</a>
                         </li>
-                        @if(ViewBag.User != null && ViewBag.User.RoleId == 2){
+                        @if(ViewBag.User != null && ViewBag.User.RoleId != 1){
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Избранные</a>
+                                <a class="nav-link" asp-area="" asp-controller="User" asp-action="Applications">Мои заявки</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Мои книги</a>
+                                <a class="nav-link" asp-area="" asp-controller="User" asp-action="MyBooks">Мои книги</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="User" asp-action="Settings">Настройки профиля</a>
                             </li>
                         }
                         @if(ViewBag.User != null && ViewBag.User.RoleId == 1){
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Добавить</a>
+                                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="AddBook">Добавить</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Изменить</a>
+                                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Users">Пользователи</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Удалить</a>
+                                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="AddBook">Заявки</a>
                             </li>
                         }
                     </ul>
                 </div>
-                @if(ViewBag.User != null && ViewBag.User.RoleId == 2)
+                @if(ViewBag.User != null && ViewBag.User.RoleId != 1)
                 {
-                    <a class="navbar-brand">@ViewBag.User.Login</a>
+                    <form class="form-inline" action="/User/Index" method="POST">
+                        <input type="text" class="form-control" name="AuthorAndTitle" placeholder="Автор/Название книги">
+                        <input type="submit" class="ml-1 btn btn-secondary text-dark" value="Поиск">
+                    </form>
+                    <a class="btn btn-secondary text-dark">Выход</a>
                 }
                 else if(ViewBag.User == null)
                 {
-                    <a class="btn btn-secondary text-dark" asp-controller="SingIn" asp-action="Index">Войти</a>
+                    <form class="form-inline" action="/NoSingIn/Index" method="POST">
+                        <input type="text" class="form-control" name="AuthorAndTitle" placeholder="Автор/Название книги">
+                        <input type="submit" class="ml-1 btn btn-secondary text-dark" value="Поиск">
+                    </form>
+                        <a class="btn btn-secondary text-dark ml-2" asp-controller="NoSingIn" asp-action="LogIn">Войти</a>
+                }
+                else
+                {
+                    <form class="form-inline" action="/Admin/Index" method="POST">
+                        <input type="text" class="form-control" name="AuthorAndTitle" placeholder="Автор/Название книги">
+                        <input type="submit" class="ml-1 btn btn-secondary text-dark" value="Поиск">
+                    </form>
+                    <a asp-controller="NoSingIn" asp-action="Index" class="btn btn-secondary text-dark ml-2">Выйти</a>
                 }
         </nav>
     </header>

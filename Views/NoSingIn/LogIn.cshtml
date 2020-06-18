@@ -1,0 +1,13 @@
+<form action="/NoSingIn/LogIn" method="POST">
+    <label for="Log">Логин</label>
+    <input id="Log" class="row form-control input-group col-md-3" required placeholder="Введите логин" type="text" name="Login"/>
+    <br>
+    <label for="Pas">Пароль</label>
+    <input class="row form-control input-group col-md-3" id="Pas" required type="password" name="Password" placeholder="Введите пароль"/>
+    <br>
+    @if(ViewBag.Find != null){
+        <p style="color:red;">Неправильный логин или пароль</p>
+    }
+    <input class="btn btn-secondary row text-dark" type="submit" value="Войти"/>
+    <a asp-controller="NoSingIn" asp-action="Registr" class="btn btn-secondary text-dark" style="position: relative; left:20px;">Регистрация</a>
+</form>

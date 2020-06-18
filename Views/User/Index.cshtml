@@ -1,7 +1,7 @@
 @{
     List<Book> books = ViewBag.Books;
         <nav class="navbar navbar-expand-lg navbar-dark bg-light" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-            <form action="/NoSingIn/Index" method="POST">
+            <form action="/User/Index" method="POST">
                 <div class="navbar-collapse collapse container">
                     <ul class="navbar-nav mr-auto">
                         <div class="form-inline">
@@ -45,7 +45,6 @@
                 @for(int i = 0; i < books.Count;i++)
                 {
                     string imgPath = "https://localhost:5001" + books[i].ImgPath;
-                    string link = $"https://localhost:5001/NoSingIn/Book/{books[i].SerNumber}";
                     <div class="col-lg-3 col-md-6 mb-4">
                             <div class="card">
                                 <div class="view overlay">
@@ -55,9 +54,9 @@
                                     </a>
                                 </div>
                                 <div class="card-body text-center">
-                                    <a href="@link" class="grey-text">
+                                    <a href="https://localhost:5001/User/Book/@books[i].SerNumber" class="grey-text">
                                         <h6>@books[i].Title</h6>
-                                    </a>
+                                    </a>                    
                                     <h6>@books[i].Author</h6>
                                     <h6>@ViewBag.CountList[i]</h6>
                                 </div>

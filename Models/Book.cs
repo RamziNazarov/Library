@@ -27,7 +27,7 @@ namespace Library.Models
         [StringLength(250)]
         public string Description { get; set; }
         [Required]
-        public DateTime DataIzdaniya {get;set;}
+        public int DataIzdaniya {get;set;}
         [Required]
         public int UserId {get;set;}
         
