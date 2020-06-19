@@ -12,10 +12,10 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="navbar-collapse collapse container">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="NoSingIn" asp-action="Index">Книги</a>
-                        </li>
                         @if(ViewBag.User != null && ViewBag.User.RoleId != 1){
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="User" asp-action="Index">Книги</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="User" asp-action="Applications">Мои заявки</a>
                             </li>
@@ -28,13 +28,21 @@
                         }
                         @if(ViewBag.User != null && ViewBag.User.RoleId == 1){
                             <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Index">Книги</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="AddBook">Добавить</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Users">Пользователи</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="AddBook">Заявки</a>
+                                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Applications">Заявки</a>
+                            </li>
+                        }
+                        @if(ViewBag.User == null){
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="NoSingIn" asp-action="Index">Книги</a>
                             </li>
                         }
                     </ul>
@@ -45,7 +53,7 @@
                         <input type="text" class="form-control" name="AuthorAndTitle" placeholder="Автор/Название книги">
                         <input type="submit" class="ml-1 btn btn-secondary text-dark" value="Поиск">
                     </form>
-                    <a class="btn btn-secondary text-dark">Выход</a>
+                    <a asp-controller="NoSingIn" asp-action="Index" class="btn btn-secondary text-dark ml-2">Выход</a>
                 }
                 else if(ViewBag.User == null)
                 {
@@ -53,7 +61,7 @@
                         <input type="text" class="form-control" name="AuthorAndTitle" placeholder="Автор/Название книги">
                         <input type="submit" class="ml-1 btn btn-secondary text-dark" value="Поиск">
                     </form>
-                        <a class="btn btn-secondary text-dark ml-2" asp-controller="NoSingIn" asp-action="LogIn">Войти</a>
+                        <a class="btn btn-secondary text-dark ml-2" asp-controller="NoSingIn" asp-action="LogIn">Вход</a>
                 }
                 else
                 {
@@ -61,7 +69,7 @@
                         <input type="text" class="form-control" name="AuthorAndTitle" placeholder="Автор/Название книги">
                         <input type="submit" class="ml-1 btn btn-secondary text-dark" value="Поиск">
                     </form>
-                    <a asp-controller="NoSingIn" asp-action="Index" class="btn btn-secondary text-dark ml-2">Выйти</a>
+                    <a asp-controller="NoSingIn" asp-action="Index" class="btn btn-secondary text-dark ml-2">Выход</a>
                 }
         </nav>
     </header>

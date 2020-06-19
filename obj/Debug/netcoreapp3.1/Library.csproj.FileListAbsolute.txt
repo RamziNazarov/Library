@@ -246,3 +246,7 @@ C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreap
 C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\User\Applications.cshtml.g.cs
 C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\User\Book.cshtml.g.cs
 C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
+C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\User\MyBooks.cshtml.g.cs
+C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\User\Settings.cshtml.g.cs
+C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Users.cshtml.g.cs
+C:\Users\Рухшод Назаров\Desktop\Library\Library\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Applications.cshtml.g.cs

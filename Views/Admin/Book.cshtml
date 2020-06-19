@@ -1,4 +1,6 @@
 @{
+    List<Comment> comments = ViewBag.Comments;
+        List<User> users = ViewBag.Users;
     Book book = ViewBag.Book;
     string a = $"https://localhost:5001"+book.ImgPath.Substring(1,book.ImgPath.Length-1);
 }
@@ -30,7 +32,7 @@
     <br>
     <div class="row col-md-4">
         <label for="Year">Год издания</label>
-        <input type="number" value="@book.DataIzdaniya" name="Year" id="year" class="ml-2 form-control input-group">
+        <input type="number" value="@book.PublishingYear" name="Year" id="year" class="ml-2 form-control input-group">
     </div>
     <br>
     <div class="row col-md-4">
@@ -73,17 +75,19 @@
                     <td>Отзыв</td>
                     <td>Дата</td>
                     <td>Пользователь</td>
+                    <td>Действие</td>
                 </tr>
             </thead>
-            @if(ViewBag.Comments.Count > 0)
+            @if(comments.Count > 0)
             {
                 <tbody>
-                    @foreach (var item in ViewBag.Comments)
+                    @foreach (var item in comments)
                     {
                         <tr>
-                            <td>@item</td>
-                            <td></td>
-                            <td></td>
+                            <td>@item.CommentText</td>
+                            <td>@item.CommentDate.ToString().Substring(0,10)</td>
+                            <td>@users.Where(p =>p.Id == item.UserId).FirstOrDefault().FirstName</td>
+                            <td><a href="https://localhost:5001/Admin/DeleteComment/@item.Id" class="btn btn-secondary text-dark ml-2">Удалить отзыв</a></td>
                         </tr>
                     }
                 </tbody>
