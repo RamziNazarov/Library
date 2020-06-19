@@ -7,17 +7,12 @@
                         <div class="form-inline">
                             <li class="nav-item">
                                     <label for="Genre">Жанры:
-                                        <select class="form-control col-md-8 input-group" name="Genre" id="Genre">
-                                            <option value="Новелла">Новелла</option>
-                                            <option value="Фантастика">Фантастика</option>
-                                            <option value="Литература">Литература</option>
-                                            <option selected value="All">Все</option>
-                                        </select>
+                                        <input class="form-control col-md-8 input-group" placeholder="Классика,Новелла" name="Genre" id="Genre">
                                     </label>
                             </li>
                             <li class="nav-item">
                                 <label for="year">Год издания: 
-                                    <input type="text" placeholder="@DateTime.Now.Year" class="form-control input-group col-md-8" name="DataIzdaniya" id="year">
+                                    <input type="number" placeholder="@DateTime.Now.Year" maxlength="4" class="form-control input-group col-md-8" name="PYear" id="year">
                                 </label>
                             </li>
                             <li class="nav-item">
@@ -59,7 +54,7 @@
                                         <h6>@books[i].Title</h6>
                                     </a>
                                     <h6>@books[i].Author</h6>
-                                    <h6>@ViewBag.CountList[i]</h6>
+                                    <h6>@ViewBag.CountList[i] в наличии</h6>
                                 </div>
                             </div>
                     </div>

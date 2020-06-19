@@ -26,61 +26,33 @@ namespace Library.Db
         {
             return context.Books.ToList();
         }
-        public void GetBookByYear(string Year,ref List<Book> books)
+        public void GetBookByYear(int? Year,ref List<Book> books)
         {
-            if(books != null)
+            if(books != null && Year >0)
             {
-                if(Year == null || int.Parse(Year) <=0)
-                {
-                    return;
-                }
-                else
-                {
-                    books = books.Where(p=>p.DataIzdaniya == int.Parse(Year)).ToList();
-                }
+                books = books.Where(p=>p.PublishingYear == Year).ToList();
             }
         }
 
         public void GetBooksByGenre(string Genre,ref List<Book> books)
         {
-            if(books != null)
+            if(books != null && Genre != null)
             {
-                if(Genre == null || Genre =="All")
-                {
-                    return;
-                }
-                else
-                {
-                    books = books.Where(p=>p.Genre.Contains(Genre)).ToList();
-                }
+                books = books.Where(p=>p.Genre.Contains(Genre)).ToList();
             }
         }
         public void GetBooksByState(string State,ref List<Book> books)
         {
-            if(books != null)
+            if(books != null && State != "All")
             {
-                if(State == null || State == "All")
-                {
-                    return;
-                }
-                else 
-                {
-                    books = books.Where(p => p.State == State).ToList();
-                }
+                books = books.Where(p => p.State == State).ToList();
             }
         }
         public void GetBooksByAuthorOrTitle(string AuthorOrTitle,ref List<Book> books)
         {
-            if(books != null)
+            if(books != null && AuthorOrTitle != null)
             {
-                if(AuthorOrTitle == null)
-                {
-                    return;
-                }
-                else
-                {
-                    books = books.Where(p => p.Title.ToLower().Contains(AuthorOrTitle.ToLower()) || p.Author.ToLower().Contains(AuthorOrTitle.ToLower())).ToList();
-                }
+                books = books.Where(p => p.Title.ToLower().Contains(AuthorOrTitle.ToLower()) || p.Author.ToLower().Contains(AuthorOrTitle.ToLower())).ToList();
             }
         }
         public Book GetBook(int SerNumb)
@@ -141,13 +113,13 @@ namespace Library.Db
                 changingBook.State = (changingBook.State == "Free")?"Busy":"Free";
             }
             changingBook.Description = (!string.IsNullOrEmpty(Description))?Description:changingBook.Description;
-            changingBook.DataIzdaniya = (Year > 0)?Year:changingBook.DataIzdaniya;
+            changingBook.PublishingYear = (Year > 0)?Year:changingBook.PublishingYear;
         }
         public void AddBook(string Title,string Author,string Genre,string Description,int Year,IFormFile uploadFile,int SerNumb)
         {
             if(uploadFile != null  && (uploadFile.ContentType.ToLower() == "image/jpg" || uploadFile.ContentType.ToLower() == "image/jpeg" || uploadFile.ContentType.ToLower() == "image/png"))
             {
-                context.Books.Add(new Book{Title = Title,Author = Author,Genre = Genre,Description = Description,DataIzdaniya = Year,UserId = 1,State = "Free",ImgPath = "/Images/" + uploadFile.FileName,SerNumber = SerNumb});
+                context.Books.Add(new Book{Title = Title,Author = Author,Genre = Genre,Description = Description,PublishingYear = Year,UserId = 1,State = "Free",ImgPath = "/Images/" + uploadFile.FileName,SerNumber = SerNumb});
                 using (var fileStream = new FileStream(invoriment.WebRootPath + "/Images/" +uploadFile.FileName, FileMode.Create))
                 {
                     uploadFile.CopyTo(fileStream);

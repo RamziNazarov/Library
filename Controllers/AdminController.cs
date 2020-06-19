@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Linq;
 using Library.Db;
@@ -34,6 +35,7 @@ namespace Library.Controllers
             ViewBag.Comments = context.Comments.Where(p=>p.BookSerNumb == Id).ToList();
             int id = context.Books.Find(Id).UserId;
             ViewBag.BookUser = context.Users.Find(id);
+            ViewBag.Users = context.Users.ToList();
             return View();
         }
         [HttpPost]
@@ -53,6 +55,7 @@ namespace Library.Controllers
         [HttpGet]
         public IActionResult AddBook()
         {
+            ViewBag.User = context.Users.Find(1);
             return View();
         }
         [HttpPost]
@@ -68,10 +71,58 @@ namespace Library.Controllers
         [HttpGet]
         public IActionResult Applications()
         {
+            ViewBag.User = context.Users.Find(1);
+            ViewBag.Books = context.Books.ToList();
+            ViewBag.Users = context.Users.Where(p =>p.RoleId !=1).ToList();
+            ViewBag.Rents = context.Rents.ToList();
             // ViewBag.Apps = context.Arendi.ToList();
             // var list = context.Arendi.ToList();
             // list[0].
             return View();
+        }
+        [HttpGet]
+        public IActionResult Users(int Id)
+        {
+            ViewBag.User = context.Users.Find(1);
+            if(Id <=0)
+                ViewBag.Users = context.Users.Where(p =>p.RoleId != 1).ToList();
+            else
+                ViewBag.Users = context.Users.Where(p =>p.RoleId != 1 && p.Id == Id).ToList();
+            ViewBag.Books = context.Books.ToList();
+            return View();
+        }
+        [HttpGet]
+        public IActionResult AddBookToUser(int Id)
+        {
+            var rent = context.Rents.Find(Id);
+            rent.State = "Одобрено";
+            rent.TakenDate = DateTime.Now;
+            context.SaveChanges();
+            var book = context.Books.Find(rent.BookSerNumb);
+            book.UserId = rent.UserId;
+            book.State = "Busy";
+            context.SaveChanges();
+            return RedirectToAction("Applications");
+        }
+        [HttpGet]
+        public IActionResult ReturnBook(int Id)
+        {
+            var rent = context.Rents.Find(Id);
+            rent.ReturnDate = DateTime.Now;
+            rent.State = "Закрыто";
+            context.SaveChanges();
+            var book = context.Books.Find(rent.BookSerNumb);
+            book.State = "Free";
+            book.UserId = 1;
+            context.SaveChanges();
+            return RedirectToAction("Applications");
+        }
+        [HttpGet]
+        public IActionResult DeleteComment(int Id)
+        {
+            context.Comments.Remove(context.Comments.Find(Id));
+            context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

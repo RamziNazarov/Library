@@ -12,34 +12,34 @@ namespace Library.Db
         {
             context = _context;
         }
-        public List<Arenda> GetApplications()
+        public List<Rent> GetApplications()
         {
-            return context.Arendi.ToList();
+            return context.Rents.ToList();
         }
-        public List<Arenda> GetAppByUserId(int Id)
+        public List<Rent> GetAppByUserId(int Id)
         {
-            return context.Arendi.Where(p =>p.UserId == Id).ToList();
+            return context.Rents.Where(p =>p.UserId == Id).ToList();
         }
-        public List<Arenda> GetAppByBookSerNumb(int Id)
+        public List<Rent> GetAppByBookSerNumb(int Id)
         {
-            return context.Arendi.Where(p =>p.BookSerNumb == Id).ToList();
+            return context.Rents.Where(p =>p.BookSerNumb == Id).ToList();
         }
         public void ChangeApp(int Id,string State)
         {
-            var App = context.Arendi.Find(Id);
+            var App = context.Rents.Find(Id);
             App.State = State;
             context.SaveChanges();
         }
         public void ReturnBook(int Id,string State)
         {
-            var App = context.Arendi.Find(Id);
+            var App = context.Rents.Find(Id);
             App.State = State;
-            App.VozDate = DateTime.Now;
+            App.ReturnDate = DateTime.Now;
             context.SaveChanges();
         }
         public void AddApplication(int BookSerNumb,int UserId)
         {
-            context.Arendi.Add(new Arenda{BookSerNumb = BookSerNumb,UserId = UserId,State = "В ожидании",TakeDate = DateTime.Now});
+            context.Rents.Add(new Rent{BookSerNumb = BookSerNumb,UserId = UserId,State = "В ожидании",TakenDate = DateTime.Now});
             context.SaveChanges();
         }
     }

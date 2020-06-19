@@ -13,15 +13,9 @@ namespace Library.Models
         [Required]
         [StringLength(50)]
         public string LastName { get; set; }
-        [StringLength(50)]
-        public string MiddleName {get;set;}
-        [StringLength(250)]
-        public string ImgPath {get;set;}
         [Required]
+        [MaxLength(9)]
         public int PhoneNumber {get;set;}
-        [Required]
-        [StringLength(200)]
-        public string Email {get;set;}
         [Required]
         [StringLength(100)]
         public string Login { get; set; }
@@ -36,6 +30,6 @@ namespace Library.Models
         public virtual Role Roles {get;set;}
         public virtual ICollection<Book> Books {get;set;}
         public virtual ICollection<Comment> Comments {get;set;}
-        public virtual ICollection<Arenda> Arendi {get;set;}
+        public virtual ICollection<Rent> Arendi {get;set;}
     }
 }

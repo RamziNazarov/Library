@@ -12,10 +12,10 @@ namespace Library.Models
         [Required(ErrorMessage = "Title column can not be empty")]
         [StringLength(50)]
         public string Title { get; set; }
-        [Required(ErrorMessage = "Author column can not be empty")]
+        [Required]
         [StringLength(50)]
         public string Author { get; set; }
-        [Required(ErrorMessage = "State column can not be empty")]
+        [Required]
         [StringLength(10)]
         public string State { get; set; }
         [Required]
@@ -27,7 +27,7 @@ namespace Library.Models
         [StringLength(250)]
         public string Description { get; set; }
         [Required]
-        public int DataIzdaniya {get;set;}
+        public int PublishingYear {get;set;}
         [Required]
         public int UserId {get;set;}
         
