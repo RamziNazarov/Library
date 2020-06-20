@@ -18,6 +18,11 @@ namespace Library.Controllers
             context = _context;
             BooksRepos = new BooksRepos(context);
         }
+        /// <summary>
+        /// Вход и определение поля user для дальнейшей работы
+        /// </summary>
+        /// <param name="Id">Для нахождения нужнего user-a</param>
+        /// <returns>Перенаправляет нас на окно с книгами</returns>
         public IActionResult Sing(int Id)
         {
             user = context.Users.Find(Id);
@@ -147,15 +152,39 @@ namespace Library.Controllers
         public IActionResult Settings()
         {
             ViewBag.User = user;
-
+            ViewBag.Error = null;
             return View();
         }
-        // [HttpPost]
-        // public IActionResult Settings(string FirstName,string LastName,string Login,string Password,int PhoneNumber,)
-        // {
-            
-        //     return RedirectToAction("LogIn","NoSingIn");
-        // }
+        [HttpPost]
+        public IActionResult Settings(string FirstName,string LastName,string Login,string Password,int PhoneNumber)
+        {
+            var userlist = context.Users.Where(p=>p.Login.ToLower() != user.Login.ToLower()).ToList();
+            foreach(var item in userlist)
+            {
+                if(item.Login.ToLower() == Login.ToLower())
+                {
+                    ViewBag.Error = "Логин занят, выберите другой";
+                    ViewBag.User = user;
+                    return View();
+                }
+            }
+            var thisUser = context.Users.Find(user.Id);
+            thisUser.LastName = LastName;
+            thisUser.FirstName = FirstName;
+            if(PhoneNumber.ToString().Length == 9 && PhoneNumber !< 0)
+                thisUser.PhoneNumber = PhoneNumber;
+            if(Login.ToLower() != thisUser.Login.ToLower() || Password.ToLower() != thisUser.Password.ToLower())
+            {
+            thisUser.Login = Login;
+            thisUser.Password = Password;
+            context.SaveChanges();
+            return RedirectToAction("LogIn","NoSingIn");
+            }
+            thisUser.Login = Login;
+            thisUser.Password = Password;
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
         [HttpGet]
         public IActionResult DeleteUser()
         {
