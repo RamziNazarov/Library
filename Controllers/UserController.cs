@@ -22,7 +22,6 @@ namespace Library.Controllers
         {
             user = context.Users.Find(Id);
             return RedirectToAction("Index");
-            // return RedirectToAction("Book",new {Id = 94425466});
         }
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -39,13 +38,13 @@ namespace Library.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Index(string Genre, int DataIzdaniya,string State,string AuthorAndTitle)
+        public async Task<IActionResult> Index(string Genre, int PYear,string State,string AuthorAndTitle)
         {
             await Task.Run(()=>{
                 var boklist = new List<Book>();
                 var countlist = new List<int>();
                 var books = BooksRepos.GetBookList();
-                if(Genre == null)
+                if(State == null)
                 {
                     BooksRepos.GetBooksByAuthorOrTitle(AuthorAndTitle,ref books);
                 }
@@ -53,7 +52,7 @@ namespace Library.Controllers
                 {
                     BooksRepos.GetBooksByGenre(Genre,ref books);
                     BooksRepos.GetBooksByState(State,ref books);
-                    BooksRepos.GetBookByYear(DataIzdaniya,ref books);
+                    BooksRepos.GetBookByYear(PYear,ref books);
                 }
                 BooksRepos.GetCountList(ref boklist,ref countlist,books);
                 ViewBag.CountList = countlist;
@@ -68,18 +67,25 @@ namespace Library.Controllers
             ViewBag.User = user;
             Book book = context.Books.Find(Id);
             ViewBag.Book = book;
-            ViewBag.Books = context.Books.Where(p=>p.Title == book.Title).ToList();
-            ViewBag.Comments = context.Comments.Where(p=>p.BookSerNumb == Id).ToList();
+            List<Comment> comments = new List<Comment>();
+            var books = context.Books.Where(p=>p.Title == book.Title).ToList();
+            for(int i =0; i < books.Count;i++)
+            {
+                comments.AddRange(context.Comments.Where(p =>p.BookSerNumb == books[i].SerNumber).ToList());
+            }
+            ViewBag.Books = books; 
+            ViewBag.Comments = comments;
             int id = context.Books.Find(Id).UserId;
             ViewBag.BookUser = context.Users.Find(id);
             ViewBag.Users = context.Users.ToList();
+            ViewBag.Rent = context.Rents.Where(p =>p.BookSerNumb == Id && p.State != "Закрыто").FirstOrDefault();
             ViewBag.ApplicationDate = context.Rents.Where(p=>p.BookSerNumb == book.SerNumber && p.UserId == id).Select(p =>p.TakenDate).FirstOrDefault();
             return View();
         }
         [HttpGet]
         public IActionResult AddApplication(int Id)
         {
-            context.Rents.Add(new Rent(){UserId = user.Id,BookSerNumb = Id,State = "Waitin1g",TakenDate = DateTime.Now,ReturnDate = DateTime.Now.AddMonths(1)});
+            context.Rents.Add(new Rent(){UserId = user.Id,BookSerNumb = Id,State = "В ожидании",TakenDate = DateTime.Now});
             context.SaveChanges();
             return RedirectToAction("Applications");
         }
@@ -129,6 +135,33 @@ namespace Library.Controllers
             context.Comments.Remove(context.Comments.Find(Id));
             context.SaveChanges();
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult MyBooks()
+        {
+            ViewBag.Books = context.Books.Where(p =>p.UserId == user.Id).ToList();
+            ViewBag.User = user;
+            return View();
+        }
+        [HttpGet]
+        public IActionResult Settings()
+        {
+            ViewBag.User = user;
+
+            return View();
+        }
+        // [HttpPost]
+        // public IActionResult Settings(string FirstName,string LastName,string Login,string Password,int PhoneNumber,)
+        // {
+            
+        //     return RedirectToAction("LogIn","NoSingIn");
+        // }
+        [HttpGet]
+        public IActionResult DeleteUser()
+        {
+            context.Users.Remove(user);
+            context.SaveChanges();
+            return RedirectToAction("LogIn","NoSingIn");
         }
     }
 }

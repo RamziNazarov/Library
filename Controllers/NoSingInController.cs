@@ -35,7 +35,6 @@ namespace Library.Controllers
                 BooksRepos.GetCountList(ref books,ref countlist,boklist);
                 ViewBag.CountList = countlist;
                 ViewBag.Books = books;
-                ViewBag.Comments = context.Comments.ToList();
             });
             return View();
         }

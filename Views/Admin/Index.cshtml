@@ -1,25 +1,37 @@
 @{
     List<Book> books = ViewBag.Books;
         <nav class="navbar navbar-expand-lg navbar-dark bg-light" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-            <form  class="form-inline" action="/Admin/Index" method="POST">
-                <label for="Genre">Жанры:</label>
-                <select class="form-control col-md-2 input-group mr-2" name="Genre" id="Genre">
-                    <option value="Новелла">Новелла</option>
-                    <option value="Фантастика">Фантастика</option>
-                    <option value="Литература">Литература</option>
-                    <option selected value="All">Все</option>
-                </select>
-                <label for="year">Год издания:</label>
-                <input type="text" placeholder="@DateTime.Now.Year" class="form-control input-group col-md-1" name="DataIzdaniya" id="year">
-                <label for="state">Статус:</label>
-                <select name="State" class="form-control input-group col-md-2 mr-2" id="state">
-                    <option value="Free">Свободные</option>
-                    <option value="Busy">В аренде</option>
-                    <option selected value="All">Все</option>
-                </select>
-                <label for="state">Серийный номер:</label>
-                <input type="number" name="SerNumb" class="form-control input-group col-md-2 mr-2" id="state">
-                <input type="submit" class="btn btn-secondary" value="Найти">
+            <form action="/Admin/Index" method="POST">
+                <div class="navbar-collapse collapse container">
+                    <ul class="navbar-nav mr-auto">
+                        <div class="form-inline">
+                            <li class="nav-item">
+                                    <label for="Genre">Жанры:
+                                        <input class="form-control col-md-8 input-group" placeholder="Классика,Новелла" name="Genre" id="Genre">
+                                    </label>
+                            </li>
+                            <li class="nav-item">
+                                <label for="year">Год издания: 
+                                    <input type="number" placeholder="@DateTime.Now.Year" class="form-control input-group col-md-8" name="PYear" id="year">
+                                </label>
+                            </li>
+                            <li class="nav-item">
+                                <label for="state">Статус: 
+                                    <select name="State" class="form-control input-group col-md-8" id="state">
+                                        <option value="Free">Свободные</option>
+                                        <option value="Busy">В аренде</option>
+                                        <option selected value="All">Все</option>
+                                    </select>
+                                </label>
+                            </li>
+                        </div>
+                        <li class="nav-item">
+                            <div class="col">
+                                <input type="submit" class="btn btn-secondary" value="Найти">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </form>
         </nav>
         <br>

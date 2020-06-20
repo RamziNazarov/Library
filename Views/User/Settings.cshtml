@@ -1,0 +1,17 @@
+@{
+    User user = ViewBag.User;
+}
+<form action="/User/Settings" method="POST">
+    <label for="FN">Имя</label><br>
+    <input type="text" name="FirstName" id="Fn" required value="@user.FirstName"><br>
+    <label for="LN">Фамилия</label><br>
+    <input type="text" name="LastName" id="LN" required value="@user.LastName"><br>
+    <label for="L">Логин</label><br>
+    <input type="text" name="Login" id="L" required value="@user.Login"><br>
+    <label for="P">Пароль</label><br>
+    <input type="password" name="Password" id="P" required value="@user.Password"><br>
+    <label for="PN">Номер</label><br>
+    <input type="number" maxlength="9" name="PhoneNumber" id="PN" required value="@user.PhoneNumber"><br>
+    <input type="submit" value="Изменить данные">
+    <a asp-controller="User" asp-action="DeleteUser" class="btn btn-secondary text-dark ml-2">Удалить аккаунт</a>
+</form>
