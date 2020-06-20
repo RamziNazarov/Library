@@ -1,0 +1,60 @@
+<form action="/NoSingIn/Registr" method="POST" enctype="multipart/form-data">
+    <div class="form-row">
+        <div class="col">
+            <div class="form-froup">
+                <label for="FN">Имя</label>
+                <input type="text" name="FirstName" required class="form-control col-md-6 input-group" id="FN" placeholder="Введите имя">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-froup">
+                <label for="LN">Фамилия</label>
+                <input type="text" name="LastName" required class="form-control col-md-6 input-group" id="LN" placeholder="Введите фамилию">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-froup">
+                <label for="L">Логин</label>
+                <input type="text" name="Login" required class="form-control col-md-6 input-group" id="L" placeholder="Введите логин">
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="form-row">
+        <div class="col">
+            <div class="form-froup">
+                <label for="P">Пароль</label>
+                <input type="password" name="Password" required class="form-control col-md-6 input-group" id="P" placeholder="Введите пароль">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-froup">
+                <label for="CP">Подтверждение пароля</label>
+                <input type="password" name="ConfirmPassword" required class="form-control col-md-6 input-group" id="CP" placeholder="Подтвердите пароль">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-froup">
+                <label for="Phone">Номер телефона</label>
+                <input type="number" name="PhoneNumber" required class="form-control col-md-6 input-group" id="Phone" placeholder="987654321">
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="form-row">
+        <div class="col">
+            <div class="form-froup">
+                <label for="BD">Дата рождения</label>
+                <input type="date" name="BirthDate" class="form-control col-md-4 input-group" id="BD">
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="form-row">
+        <div class="col">
+            <div class="form-froup">
+                <input type="submit" class="row btn btn-secondary text-dark" value="Зарегистрироваться">
+            </div>
+        </div>
+    </div>
+</form>

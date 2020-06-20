@@ -1,0 +1,86 @@
+@{
+    List<Comment> comments = ViewBag.Comments;
+        List<User> users = ViewBag.Users;
+    Book book = ViewBag.Book;
+    string a = $"https://localhost:5001"+book.ImgPath.Substring(1,book.ImgPath.Length-1);
+}
+<form action="/Admin/Book" method="post" enctype="multipart/form-data">
+    <div class="row col-md-4">
+        <label for="SerNumb">Серийный номер</label>
+        <input type="number" value="@book.SerNumber" readonly="true" name="Id" id="SerNumb" class="ml-2 form-control input-group">
+    </div>
+    <br>
+    <div class="row col-md-4">
+        <label for="newfile">Изменить фотографию</label>
+        <input type="file" name="newfile" id="newfile" class="ml-2 form-control input-group">
+    </div>
+    <br>
+    <div class="row col-md-4">
+        <label for="Title">Название</label>
+        <input type="text" required value="@book.Title" name="Title" id="Title" class="ml-2 form-control input-group">
+    </div>
+    <br>
+    <div class="row col-md-4">
+        <label for="Author">Автор</label>
+        <input type="text" maxlength="" required value="@book.Author" name="Author" id="Author" class="ml-2 form-control input-group">
+    </div>
+    <br>
+    <div class="row col-md-4">
+        <label for="Descriptoin">Описание</label>
+        <textarea required name="Description" id="Description" maxlength="250" cols="25" class="ml-2 form-control input-group" rows="10">@book.Description</textarea>
+    </div>
+    <br>
+    <div class="row col-md-4">
+        <label for="Year">Год издания</label>
+        <input type="number" value="@book.PublishingYear" name="Year" id="year" class="ml-2 form-control input-group">
+    </div>
+    <br>
+    <div class="row col-md-4">
+        <label for="Genre">Жанры</label>
+        <input type="text" name="Genre" id="Genre" value="@book.Genre" class="ml-2 form-control input-group">
+    </div>
+    <br>
+    <div class="form-row">
+        <input type="submit" class="btn btn-secondary text-dark" value="Сохранить изменения">
+        <a href="https://localhost:5001/Admin/DeleteBook/@book.SerNumber" class="ml-3 btn btn-secondary text-dark">Удалить книгу</a>
+    </div>
+    <br>
+</form>
+@{
+    @if(ViewBag.Comments != null)
+    {
+        <h4>Отзывы</h4>
+        <table class="mb-4 table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <td>Отзыв</td>
+                    <td>Дата</td>
+                    <td>Пользователь</td>
+                    <td>Действие</td>
+                </tr>
+            </thead>
+            @if(comments.Count > 0)
+            {
+                <tbody>
+                    @foreach (var item in comments)
+                    {
+                        <tr>
+                            <td>@item.CommentText</td>
+                            <td>@item.CommentDate.ToString().Substring(0,10)</td>
+                            <td>@users.Where(p =>p.Id == item.UserId).FirstOrDefault().FirstName</td>
+                            <td><a href="https://localhost:5001/Admin/DeleteComment/@item.Id" class="btn btn-secondary text-dark ml-2">Удалить отзыв</a></td>
+                        </tr>
+                    }
+                </tbody>
+            }
+            else
+            {
+                <tbody>
+                    <tr>
+                        <td class="text-center" colspan="3">Отзывов нет</td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    }
+}

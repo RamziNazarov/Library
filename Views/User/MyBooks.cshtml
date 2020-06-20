@@ -1,0 +1,27 @@
+@{
+    List<Book> books = ViewBag.Books;
+            <section class="text-center mb-4 mt-4">
+            <div class="row wow fadeId">
+                @for(int i = 0; i < books.Count;i++)
+                {
+                    string imgPath = "https://localhost:5001" + books[i].ImgPath;
+                    <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="card">
+                                <div class="view overlay">
+                                    <img height="250px" class="card-img-top" src="@imgPath" alt="">
+                                    <a href="">
+                                        <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <a href="https://localhost:5001/User/Book/@books[i].SerNumber" class="grey-text">
+                                        <h6>@books[i].Title</h6>
+                                    </a>                    
+                                    <h6>@books[i].Author</h6>
+                                </div>
+                            </div>
+                    </div>
+                }
+            </div>
+        </section>
+    }
