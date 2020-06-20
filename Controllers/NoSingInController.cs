@@ -16,13 +16,10 @@ namespace Library.Controllers
     {
         DataContext context {get;}
         BooksRepos BooksRepos {get;}
-        
-        IWebHostEnvironment _appEnvironment;
-        public NoSingInController(DataContext _context, IWebHostEnvironment inv)
+        public NoSingInController(DataContext _context)
         {
             context = _context;
             BooksRepos = new BooksRepos(context);
-            _appEnvironment = inv;
         }
 
         [HttpGet]

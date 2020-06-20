@@ -164,6 +164,15 @@ namespace Library.Controllers
             return RedirectToAction("Applications");
         }
         [HttpGet]
+        public IActionResult Otkaz(int Id)
+        {
+            var rent = context.Rents.Find(Id);
+            rent.ReturnDate = DateTime.Now;
+            rent.State = "Закрыто";
+            context.SaveChanges();
+            return RedirectToAction("Applications");
+        }
+        [HttpGet]
         public IActionResult DeleteComment(int Id)
         {
             context.Comments.Remove(context.Comments.Find(Id));

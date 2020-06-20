@@ -35,7 +35,7 @@
     <h5>Год издания: @book.PublishingYear</h3>
     <p style="font-weight: 600;">Описание: @book.Description</p>
     @if(book.State == "Free"){
-        if(ViewBag.Rent != null && ViewBag.Rent.State == "В ожидании")
+        if(ViewBag.Rent != null && ViewBag.Rent.State == "В ожидании" && ViewBag.User.Id == ViewBag.Rent.UserId)
         {
             <p style="font-weight: 500;">Вы отправили запрос на приобритение, ожидайте ответа</p>
         }

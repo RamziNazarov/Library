@@ -46,7 +46,7 @@
                     }
                     @if(item.State == "В ожидании")
                     {
-                        <td><a href="https://localhost:5001/Admin/AddBookToUser/@item.Id" class="btn btn-secondary text-dark mr-1">Одобрить</a><a class="btn btn-secondary text-dark">Отказать</a></td>
+                        <td><a href="https://localhost:5001/Admin/AddBookToUser/@item.Id" class="btn btn-secondary text-dark mr-1">Одобрить</a><a href="https://localhost:5001/Admin/Otkaz/@item.Id" class="btn btn-secondary text-dark">Отказать</a></td>
                     }
                     else if(item.State == "Одобрено")
                     {
