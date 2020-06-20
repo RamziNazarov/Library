@@ -38,7 +38,7 @@ namespace Library.Db
         {
             if(books != null && Genre != null)
             {
-                books = books.Where(p=>p.Genre.Contains(Genre)).ToList();
+                books = books.Where(p=>p.Genre.ToLower().Contains(Genre.ToLower())).ToList();
             }
         }
         public void GetBooksByState(string State,ref List<Book> books)
@@ -90,7 +90,7 @@ namespace Library.Db
                 }
             }
         }
-        public void ChangeBook(ref Book changingBook,string Title,string Author,string Genre,int Year,string Description,int UserId,IFormFile newfile)
+        public void ChangeBook(ref Book changingBook,string Title,string Author,string Genre,int Year,string Description,IFormFile newfile)
         {
             if(newfile != null && (newfile.ContentType.ToLower() == "image/jpg" || newfile.ContentType.ToLower() == "image/jpeg" || newfile.ContentType.ToLower() == "image/png"))
             {
@@ -107,11 +107,6 @@ namespace Library.Db
             changingBook.Title = (!string.IsNullOrEmpty(Title))?Title:changingBook.Title;
             changingBook.Author = (!string.IsNullOrEmpty(Author))?Author:changingBook.Author;
             changingBook.Genre = (!string.IsNullOrEmpty(Genre))?Genre:changingBook.Genre;
-            if(changingBook.UserId != UserId && changingBook.UserId != 1 && UserId > 0)
-            {
-                changingBook.UserId = UserId;
-                changingBook.State = (changingBook.State == "Free")?"Busy":"Free";
-            }
             changingBook.Description = (!string.IsNullOrEmpty(Description))?Description:changingBook.Description;
             changingBook.PublishingYear = (Year > 0)?Year:changingBook.PublishingYear;
         }

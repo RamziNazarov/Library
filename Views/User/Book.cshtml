@@ -7,10 +7,10 @@
     DateTime date = ViewBag.ApplicationDate;
     string a = $"https://localhost:5001"+book.ImgPath;
 }
-<form action="/User/Book" method="POST">
+<form action="/User/Book" method="GET">
     <div class="row mt-2 ml-1">
         <label for="sern">Серийный номер: </label>
-        <select id="sern" class="form-control ml-1 mr-5 input-group col-md-2" name="SerNumb">
+        <select id="sern" class="form-control ml-1 mr-5 input-group col-md-2" name="Id">
         @foreach (var item in ViewBag.Books)
         {
             if(item.SerNumber == book.SerNumber)
@@ -35,11 +35,20 @@
     <h5>Год издания: @book.PublishingYear</h3>
     <p style="font-weight: 600;">Описание: @book.Description</p>
     @if(book.State == "Free"){
+        if(ViewBag.Rent != null && ViewBag.Rent.State == "В ожидании")
+        {
+            <p style="font-weight: 500;">Вы отправили запрос на приобритение, ожидайте ответа</p>
+        }
+        else
+        {
         <a href="https://localhost:5001/User/AddApplication/@book.SerNumber" class="btn btn-secondary text-dark">Приобрести</a>
+        }
+        <br>
     }
     else if(book.UserId == ViewBag.User.Id)
     {
         <p style="font-weight: 500;">Книга у вас</p>
+        <br><br>
     }
     else
     {

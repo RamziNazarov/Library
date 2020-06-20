@@ -40,25 +40,6 @@
         <input type="text" name="Genre" id="Genre" value="@book.Genre" class="ml-2 form-control input-group">
     </div>
     <br>
-    @if(book.State == "Free")
-    {
-        <div class="row col-md-4">
-            <label for="user">Id нового владельца</label>
-            <input type="number" class="form-control input-group ml-2" name="UserId" id="user">
-        </div>
-        <br>
-    }
-    else
-    {
-        <div class="row col-md-4">
-            <label for="user">Владелец</label>
-            <select class="form-control input-group ml-2" name="UserId" id="user">
-                <option selected value="@ViewBag.BookUser.Id">@ViewBag.BookUser.FirstName</option>
-                <option value="1">Пусто</option>
-            </select>
-        </div>
-        <br>
-    }
     <div class="form-row">
         <input type="submit" class="btn btn-secondary text-dark" value="Сохранить изменения">
         <a href="https://localhost:5001/Admin/DeleteBook/@book.SerNumber" class="ml-3 btn btn-secondary text-dark">Удалить книгу</a>
