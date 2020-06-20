@@ -1,0 +1,63 @@
+@{
+    List<Book> books = ViewBag.Books;
+        <nav class="navbar navbar-expand-lg navbar-dark bg-light" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+            <form action="/User/Index" method="POST">
+                <div class="navbar-collapse collapse container">
+                    <ul class="navbar-nav mr-auto">
+                        <div class="form-inline">
+                            <li class="nav-item">
+                                    <label for="Genre">Жанры:
+                                        <input class="form-control col-md-8 input-group" placeholder="Классика,Новелла" name="Genre" id="Genre">
+                                    </label>
+                            </li>
+                            <li class="nav-item">
+                                <label for="year">Год издания: 
+                                    <input type="text" placeholder="@DateTime.Now.Year" class="form-control input-group col-md-8" name="PYear" id="year">
+                                </label>
+                            </li>
+                            <li class="nav-item">
+                                <label for="state">Статус: 
+                                    <select name="State" class="form-control input-group col-md-8" id="state">
+                                        <option value="Free">Свободные</option>
+                                        <option value="Busy">В аренде</option>
+                                        <option selected value="All">Все</option>
+                                    </select>
+                                </label>
+                            </li>
+                        </div>
+                        <li class="nav-item">
+                            <div class="col">
+                                <input type="submit" class="btn btn-secondary" value="Найти">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </nav>
+        <br>
+            <section class="text-center mb-4">
+            <div class="row wow fadeId">
+                @for(int i = 0; i < books.Count;i++)
+                {
+                    string imgPath = "https://localhost:5001" + books[i].ImgPath;
+                    <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="card">
+                                <div class="view overlay">
+                                    <img height="250px" class="card-img-top" src="@imgPath" alt="">
+                                    <a href="">
+                                        <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <a href="https://localhost:5001/User/Book/@books[i].SerNumber" class="grey-text">
+                                        <h6>@books[i].Title</h6>
+                                    </a>                    
+                                    <h6>@books[i].Author</h6>
+                                    <h6>@ViewBag.CountList[i] в наличии</h6>
+                                </div>
+                            </div>
+                    </div>
+                }
+            </div>
+        </section>
+    }
